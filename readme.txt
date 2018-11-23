@@ -1,1 +1,0 @@
-All of the stuff that is in the Udemy's iOS 12 Development with Swift 4.2
