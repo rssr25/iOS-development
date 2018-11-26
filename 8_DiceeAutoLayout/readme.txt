@@ -1,0 +1,1 @@
+This version of Dicee App uses Auto Layout concepts to place the UI elements on different screen sizes in perfect orientation without any distortion.
