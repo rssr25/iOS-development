@@ -26,7 +26,7 @@ class ViewController: UIViewController, CanReceive {
         {
             let secondVC = segue.destination as! SecondViewController
             secondVC.data = textField.text!
-            secondVC.delegat = self
+            secondVC.delegate = self
         }
     }
     

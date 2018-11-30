@@ -13,6 +13,7 @@
 		5EF780B121B11089000F1F0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5EF780B021B11089000F1F0D /* Assets.xcassets */; };
 		5EF780B421B11089000F1F0D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EF780B221B11089000F1F0D /* LaunchScreen.storyboard */; };
 		5EF780BC21B110EA000F1F0D /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF780BB21B110EA000F1F0D /* SecondViewController.swift */; };
+		5EF780BE21B11CC5000F1F0D /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF780BD21B11CC5000F1F0D /* Protocols.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		5EF780B321B11089000F1F0D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5EF780B521B11089000F1F0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5EF780BB21B110EA000F1F0D /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		5EF780BD21B11CC5000F1F0D /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				5EF780B221B11089000F1F0D /* LaunchScreen.storyboard */,
 				5EF780B521B11089000F1F0D /* Info.plist */,
 				5EF780BB21B110EA000F1F0D /* SecondViewController.swift */,
+				5EF780BD21B11CC5000F1F0D /* Protocols.swift */,
 			);
 			path = "Delegates and Protocols";
 			sourceTree = "<group>";
@@ -141,6 +144,7 @@
 				5EF780BC21B110EA000F1F0D /* SecondViewController.swift in Sources */,
 				5EF780AC21B11088000F1F0D /* ViewController.swift in Sources */,
 				5EF780AA21B11088000F1F0D /* AppDelegate.swift in Sources */,
+				5EF780BE21B11CC5000F1F0D /* Protocols.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

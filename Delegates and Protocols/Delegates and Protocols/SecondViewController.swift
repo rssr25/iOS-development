@@ -9,13 +9,9 @@
 import UIKit
 
 
-protocol CanReceive {
-    func dataReceived(data: String)
-}
-
 class SecondViewController: UIViewController {
 
-    var delegat : CanReceive?
+    var delegate : CanReceive?
     
     var data = ""
     @IBOutlet weak var label: UILabel!
@@ -29,7 +25,7 @@ class SecondViewController: UIViewController {
     
     @IBAction func sendDataBack(_ sender: UIButton)
     {
-        delegat?.dataReceived(data: textField.text!)
+        delegate?.dataReceived(data: textField.text!)
         dismiss(animated: true, completion: nil)
         
     }
