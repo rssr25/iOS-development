@@ -74,7 +74,7 @@
                 <outlet property="messageBody" destination="Ael-H3-UuV" id="kXz-0y-fp3"/>
                 <outlet property="senderUsername" destination="khv-tc-S9N" id="9FT-43-C9p"/>
             </connections>
-            <point key="canvasLocation" x="439" y="381.5"/>
+            <point key="canvasLocation" x="438.39999999999998" y="380.95952023988008"/>
         </tableViewCell>
     </objects>
 </document>
