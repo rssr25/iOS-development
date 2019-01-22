@@ -21,42 +21,25 @@ class ViewController: UIViewController {
         return view as! MTKView
     }
     
-    //define once only at the start of the application
+    var renderer : Renderer?
     
-    var device : MTLDevice!
-    var commandQueue : MTLCommandQueue!
+    //define once only at the start of the application
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         metalView.device = MTLCreateSystemDefaultDevice()
-        device = metalView.device
+        guard let device = metalView.device else{
+            fatalError("device not created. Run on physical device.")
+        }
         metalView.clearColor = Colors.greenColor
-        metalView.delegate = self
-        commandQueue = device.makeCommandQueue()
+        renderer = Renderer(device: device)
+        metalView.delegate = renderer
         
     }
 
 
 }
 
-extension ViewController : MTKViewDelegate
-{
-    func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
-        
-    }
-    
-    func draw(in view: MTKView) {
-        guard let drawable = view.currentDrawable,
-            let descriptor = view.currentRenderPassDescriptor else {return}
-        
-        let commandBuffer = commandQueue.makeCommandBuffer()
-        let commandEncoder = commandBuffer?.makeRenderCommandEncoder(descriptor: descriptor)
-        commandEncoder?.endEncoding()
-        commandBuffer?.present(drawable)
-        commandBuffer?.commit()
-    }
-    
-    
-}
+
