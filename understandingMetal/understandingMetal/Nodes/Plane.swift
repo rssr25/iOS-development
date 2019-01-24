@@ -12,6 +12,25 @@ class Plane : Node
     var vertexBuffer : MTLBuffer?
     var indexBuffer : MTLBuffer?
     
+    var pipelineState: MTLRenderPipelineState!
+    var fragmentFunctionName : String = "fragment_shader"
+    var vertexFunctionName : String = "vertex_shader"
+    var vertexDescriptor: MTLVertexDescriptor
+    {
+        let vertexDescriptor = MTLVertexDescriptor()
+        //position data
+        vertexDescriptor.attributes[0].format = .float3
+        vertexDescriptor.attributes[0].offset = 0
+        vertexDescriptor.attributes[0].bufferIndex = 0
+        //color data
+        vertexDescriptor.attributes[1].format = .float4
+        vertexDescriptor.attributes[1].offset = MemoryLayout<float3>.stride
+        vertexDescriptor.attributes[1].bufferIndex = 0
+        
+        vertexDescriptor.layouts[0].stride = MemoryLayout<Vertex>.stride
+        return vertexDescriptor
+    }
+    
     var vertices : [Vertex] =
         [
             Vertex(position: float3(-1, 1, 0),
@@ -44,6 +63,7 @@ class Plane : Node
     init(device : MTLDevice) {
         super.init()
         buildBuffers(device: device)
+        pipelineState = buildPipelineState(device: device)
     }
     
     private func buildBuffers(device : MTLDevice)
@@ -66,6 +86,7 @@ class Plane : Node
         let animateBy = abs(sin(time)/2 + 0.5)
         constants.animateBy = animateBy
         
+        commandEncoder.setRenderPipelineState(pipelineState)
         commandEncoder.setVertexBuffer(vertexBuffer, offset: 0, index: 0)
         commandEncoder.setVertexBytes(&constants, length: MemoryLayout<Constants>.stride, index: 1)
         commandEncoder.drawIndexedPrimitives(type: .triangle,
@@ -76,4 +97,9 @@ class Plane : Node
         
         
     }
+}
+
+extension Plane : Renderable
+{
+
 }
