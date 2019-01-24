@@ -18,13 +18,16 @@ class Renderer : NSObject
     var vertices : [Float] = [
         -1, 1, 0,
         -1, -1, 0,
-        1, -1, 0
-    ]
-    var vertices2 : [Float] = [
+        1, -1, 0,
         -1, 1, 0,
         1, 1, 0,
         1, -1, 0
-    ]
+        ]
+//    var vertices : [Float] = [
+//        -1, 1, 0,
+//        1, 1, 0,
+//        1, -1, 0
+//    ]
     //pipeline state and the vertex buffer
     var pipelineState : MTLRenderPipelineState?
     var vertexBuffer : MTLBuffer?
