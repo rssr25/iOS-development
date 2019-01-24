@@ -12,13 +12,22 @@ class Plane : Node
     var vertexBuffer : MTLBuffer?
     var indexBuffer : MTLBuffer?
     
-    //set up the vertices.
-    var vertices : [Float] = [
-        -1, 1, 0, //v0
-        -1, -1, 0, //v1
-        1, -1, 0, //v2
-        1, 1, 0, //v3
+    var vertices : [Vertex] =
+        [
+            Vertex(position: float3(-1, 1, 0),
+                   color: float4(1, 0, 0, 1)),
+            
+            Vertex(position: float3(-1, -1, 0),
+                   color: float4(0, 1, 0, 1)),
+            
+            Vertex(position: float3(1, -1, 0),
+                   color: float4(0, 0, 1, 1)),
+            
+            Vertex(position: float3(1, 1, 0),
+                   color: float4(1, 0, 1, 1))
+            
     ]
+    
     var indices : [UInt16] = [
         0, 1, 2,
         2, 3, 0
@@ -39,9 +48,13 @@ class Plane : Node
     
     private func buildBuffers(device : MTLDevice)
     {
-        vertexBuffer = device.makeBuffer(bytes: vertices, length: vertices.count * MemoryLayout<Float>.size, options: [])
+        vertexBuffer = device.makeBuffer(bytes: vertices,
+                                         length: vertices.count * MemoryLayout<Vertex>.stride,
+                                         options: [])
         
-        indexBuffer = device.makeBuffer(bytes: indices, length: indices.count * MemoryLayout<UInt16>.size, options: [])
+        indexBuffer = device.makeBuffer(bytes: indices,
+                                        length: indices.count * MemoryLayout<UInt16>.size,
+                                        options: [])
     }
     
     override func render(commandEncoder: MTLRenderCommandEncoder, deltaTime: Float) {
