@@ -9,9 +9,19 @@
 #include <metal_stdlib>
 using namespace metal;
 
-vertex float4 vertex_shader(const device packed_float3 *vertices [[buffer(0)]], uint vertexId [[vertex_id]])
+struct Constants
 {
-    return float4(vertices[vertexId], 1);
+    float animateBy;
+};
+
+vertex float4 vertex_shader(const device packed_float3 *vertices [[buffer(0)]],
+                            uint vertexId [[vertex_id]],
+                            constant Constants &constants [[ buffer(1) ]])
+{
+    float4 position = float4(vertices[vertexId], 1);
+    position.x += constants.animateBy;
+    return position;
+    //return float4(vertices[vertexId], 1);
 }
 
 fragment half4 fragment_shader()
